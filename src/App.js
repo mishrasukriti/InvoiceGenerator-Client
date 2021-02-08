@@ -3,20 +3,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //ROUTES
 import LandingPage from "./components/LandingPage";
 
+// import InvoiceLandingPage from "./components/invoice/InvoiceLandingPage"
+
 //ADMIN ROUTES
 import AdminLogin from "./components/admin/AdminLogin";
 
 import AdminServiceRequest from "./components/admin/ServiceRequest/ServiceRequest";
 import AdminService from "./components/admin/ServiceRequest/Service";
 import AdminAddServiceRequest from "./components/admin/ServiceRequest/AddForm";
-
-import AdminLeads from "./components/admin/Leads/Leads";
-import AdminLead from "./components/admin/Leads/Lead";
-import AdminAddLead from "./components/admin/Leads/AddFormLead";
-
-import AdminContact from "./components/admin/Contact/Contact";
-import AdminContacts from "./components/admin/Contact/Contacts";
-import AdminAddContact from "./components/admin/Contact/AddForm";
 
 import AdminAddUser from "./components/admin/User/AddUser";
 import AdminAllUsers from "./components/admin/User/AllUser";
@@ -27,14 +21,6 @@ import ManagerLogin from "./components/manager/ManagerLogin";
 import ManagerServiceRequest from "./components/manager/ServiceRequest/ServiceRequest";
 import ManagerAddService from "./components/manager/ServiceRequest/AddForm";
 import ManagerService from "./components/manager/ServiceRequest/Service";
-
-import ManagerLead from "./components/manager/Leads/Lead";
-import ManagerAddLead from "./components/manager/Leads/AddForm";
-import ManagerLeads from "./components/manager/Leads/Leads";
-
-import ManagerContact from "./components/manager/Contact/Contact";
-import ManagerAddContact from "./components/manager/Contact/AddForm";
-import ManagerContacts from "./components/manager/Contact/Contacts";
 
 import ManagerAddUser from "./components/manager/User/AddUser";
 import ManagerAllUsers from "./components/manager/User/AllUser";
@@ -47,13 +33,6 @@ import EmployeeServiceRequest from "./components/employee/ServiceRequest/Service
 import EmployeeAddService from "./components/employee/ServiceRequest/AddForm";
 import EmployeeService from "./components/employee/ServiceRequest/Service";
 
-import EmployeeLead from "./components/employee/Leads/Lead";
-import EmployeeAddLead from "./components/employee/Leads/AddForm";
-import EmployeeLeads from "./components/employee/Leads/Leads";
-
-import EmployeeContact from "./components/employee/Contact/Contact";
-import EmployeeAddContact from "./components/employee/Contact/AddForm";
-import EmployeeContacts from "./components/employee/Contact/Contacts";
 import EmployeeChangePassword from "./components/employee/EmployeeChangePassword";
 import ManagerChangePassword from "./components/manager/ManagerChangePassword";
 import AdminChangePassword from "./components/admin/AdminChangePassword";
@@ -96,27 +75,7 @@ const App = () => {
             exact
             component={AdminService}
           />
-          <Route
-            path="/admindashboard/lead"
-            exact
-            component={() => <AdminLead />}
-          />
-          <Route path="/admindashboard/lead/add" component={AdminAddLead} />
-          <Route path="/admindashboard/lead/:id" component={AdminLeads} />
-          <Route
-            path="/admindashboard/contact"
-            exact
-            component={() => <AdminContact />}
-          />
-          <Route
-            path="/admindashboard/contact/add"
-            component={AdminAddContact}
-          />
-          <Route
-            path="/admindashboard/contact/:id"
-            exact
-            component={AdminContacts}
-          />
+          
           <Route
             path="/admindashboard/allusers"
             exact
@@ -147,31 +106,7 @@ const App = () => {
             path="/managerdashboard/servicerequest/:id"
             component={ManagerService}
           />
-          <Route
-            path="/managerdashboard/lead"
-            exact
-            component={() => <ManagerLead />}
-          />
-          <Route
-            path="/managerdashboard/lead/add"
-            exact
-            component={ManagerAddLead}
-          />
-          <Route path="/managerdashboard/lead/:id" component={ManagerLeads} />
-          <Route
-            path="/managerdashboard/contact"
-            exact
-            component={() => <ManagerContact />}
-          />
-          <Route
-            path="/managerdashboard/contact/add"
-            exact
-            component={ManagerAddContact}
-          />
-          <Route
-            path="/managerdashboard/contact/:id"
-            component={ManagerContacts}
-          />
+          
           <Route path="/manager/passwordreset" exact component={() => <ManagerPasswordReset />} />
           <Route
             path="/managerdashboard/allusers"
@@ -205,37 +140,9 @@ const App = () => {
             exact
             component={EmployeeService}
           />
-          <Route
-            path="/employeedashboard/lead"
-            exact
-            component={() => <EmployeeLead />}
-          />
-          <Route
-            path="/employeedashboard/lead/add"
-            exact
-            component={EmployeeAddLead}
-          />
-          <Route
-            path="/employeedashboard/lead/:id"
-            exact
-            component={EmployeeLeads}
-          />
-          <Route
-            path="/employeedashboard/contact"
-            exact
-            component={() => <EmployeeContact />}
-          />
-          <Route
-            path="/employeedashboard/contact/add"
-            exact
-            component={EmployeeAddContact}
-          />
-          <Route
-            path="/employeedashboard/contact/:id"
-            exact
-            component={EmployeeContacts}
-          />
+          
           <Route path="/employee/passwordreset" exact component={() => <EmployeePasswordReset />} />
+          
         </Switch>
       </Router>
     </React.Fragment>
