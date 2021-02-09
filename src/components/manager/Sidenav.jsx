@@ -21,31 +21,14 @@ const Sidenav = () => {
           </li>
           <li>
             <NavLink
-              to="/managerdashboard/servicerequest"
+              to="/managerdashboard/invoice"
               className="nav-items"
               activeClassName={`nav-items active`}
             >
-             <i className="fa fa-ticket" aria-hidden="true"></i> Service Request
+             <i className="fa fa-ticket" aria-hidden="true"></i> Invoice
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/managerdashboard/lead"
-              className="nav-items"
-              activeClassName={`nav-items active`}
-            >
-               <i className="fa fa-line-chart" aria-hidden="true"></i> Lead
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/managerdashboard/contact"
-              className="nav-items"
-              activeClassName={`nav-items active`}
-            >
-              <i className="fa fa-address-book" aria-hidden="true"></i> Contacts
-            </NavLink>
-          </li>
+          
           <li>
             <NavLink
               to="/managerdashboard/allusers"

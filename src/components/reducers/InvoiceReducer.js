@@ -1,4 +1,4 @@
-const serviceReducer = (state = [], action) => {
+const invoiceReducer = (state = [], action) => {
   switch (action.type) {
     case "LOAD_SERVICE_REQUEST":
       return action.result;
@@ -9,4 +9,4 @@ const serviceReducer = (state = [], action) => {
   }
 };
 
-export default serviceReducer;
+export default invoiceReducer;

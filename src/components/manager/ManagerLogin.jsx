@@ -3,9 +3,9 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import "react-toastify/dist/ReactToastify.css";
 import ErrorMsg from '../ErrorMsg';
 import { Link } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const ManagerLogin = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setLoading] = useState(false);
 
-  const url = `https://sukriti-crm-server.herokuapp.com/api/manager/login`;
+  const url = `http://localhost:4050/api/manager/login`;
 
   const history = useHistory();
 
@@ -52,12 +52,12 @@ const ManagerLogin = () => {
     // const response = { email: email, password: password };
     // try {
     //   const result = await axios.post(
-    //     "https://sukriti-crm-server.herokuapp.com/api/manager/login",
+    //     "http://localhost:4050/api/manager/login",
     //     response
     //   );
     //   setLoading(false);
     //   localStorage.setItem("token", result.data);
-    //   history.push("/managerdashboard/servicerequest");
+    //   history.push("/managerdashboard/invoice");
     // } catch (error) {
     //   setLoading(false);
     //   ErrorNotify();

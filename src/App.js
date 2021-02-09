@@ -2,15 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //ROUTES
 import LandingPage from "./components/LandingPage";
-
-// import InvoiceLandingPage from "./components/invoice/InvoiceLandingPage"
+import "./styles/style.css";
 
 //ADMIN ROUTES
 import AdminLogin from "./components/admin/AdminLogin";
 
-import AdminServiceRequest from "./components/admin/ServiceRequest/ServiceRequest";
-import AdminService from "./components/admin/ServiceRequest/Service";
-import AdminAddServiceRequest from "./components/admin/ServiceRequest/AddForm";
+import AdminInvoice from "./components/admin/Invoice/AllInvoice";
+import AdminService from "./components/admin/Invoice/Invoice";
+import AdminAddInvoice from "./components/admin/Invoice/AddForm";
 
 import AdminAddUser from "./components/admin/User/AddUser";
 import AdminAllUsers from "./components/admin/User/AllUser";
@@ -18,9 +17,9 @@ import AdminAllUsers from "./components/admin/User/AllUser";
 //MANAGER ROUTES
 import ManagerLogin from "./components/manager/ManagerLogin";
 
-import ManagerServiceRequest from "./components/manager/ServiceRequest/ServiceRequest";
-import ManagerAddService from "./components/manager/ServiceRequest/AddForm";
-import ManagerService from "./components/manager/ServiceRequest/Service";
+import ManagerInvoice from "./components/manager/Invoice/AllInvoice";
+import ManagerAddService from "./components/manager/Invoice/AddForm";
+import ManagerService from "./components/manager/Invoice/Invoice";
 
 import ManagerAddUser from "./components/manager/User/AddUser";
 import ManagerAllUsers from "./components/manager/User/AllUser";
@@ -29,9 +28,9 @@ import ManagerAllUsers from "./components/manager/User/AllUser";
 //EMPLOYEE ROUTES
 import EmployeeLogin from "./components/employee/EmployeeLogin";
 
-import EmployeeServiceRequest from "./components/employee/ServiceRequest/ServiceRequest";
-import EmployeeAddService from "./components/employee/ServiceRequest/AddForm";
-import EmployeeService from "./components/employee/ServiceRequest/Service";
+import EmployeeInvoice from "./components/employee/Invoice/AllInvoice";
+import EmployeeAddService from "./components/employee/Invoice/AddForm";
+import EmployeeService from "./components/employee/Invoice/Invoice";
 
 import EmployeeChangePassword from "./components/employee/EmployeeChangePassword";
 import ManagerChangePassword from "./components/manager/ManagerChangePassword";
@@ -41,10 +40,14 @@ import AdminDashboardMain from './components/admin/dashboard/dash';
 import ManagerDashboardMain from './components/manager/dashboard/dash';
 import EmployeeDashboardMain from './components/employee/dashboard/dash';
 
-import "./styles/style.css";
+
 import AdminPasswordReset from "./components/admin/AdminPasswordReset";
 import ManagerPasswordReset from "./components/manager/ManagerPasswordReset";
 import EmployeePasswordReset from "./components/employee/EmployeePasswordReset";
+
+import EmployeeActivateAccount from "./components/employee/EmployeeActivateAccount"
+import ManagerActivateAccount from "./components/manager/ManagerActivateAccount"
+import AdminActivateAccount from "./components/admin/AdminActivateAccount"
 
 const App = () => {
   return (
@@ -61,17 +64,17 @@ const App = () => {
           <Route path="/adminlogin" exact component={() => <AdminLogin />} />
           <Route path="/adminchangepassword" exact component={() => <AdminChangePassword />} />
           <Route
-            path="/admindashboard/servicerequest"
+            path="/admindashboard/invoice"
             exact
-            component={() => <AdminServiceRequest />}
+            component={() => <AdminInvoice />}
           />
           <Route
-            path="/admindashboard/servicerequest/add"
+            path="/admindashboard/invoice/add"
             exact
-            component={() => <AdminAddServiceRequest />}
+            component={() => <AdminAddInvoice />}
           />
           <Route
-            path="/admindashboard/servicerequest/:id"
+            path="/admindashboard/invoice/:id"
             exact
             component={AdminService}
           />
@@ -93,17 +96,17 @@ const App = () => {
           />
           <Route path="/managerchangepassword" exact component={() => <ManagerChangePassword />} />
           <Route
-            path="/managerdashboard/servicerequest"
+            path="/managerdashboard/invoice"
             exact
-            component={() => <ManagerServiceRequest />}
+            component={() => <ManagerInvoice />}
           />
           <Route
-            path="/managerdashboard/servicerequest/add"
+            path="/managerdashboard/invoice/add"
             exact
             component={ManagerAddService}
           />
           <Route
-            path="/managerdashboard/servicerequest/:id"
+            path="/managerdashboard/invoice/:id"
             component={ManagerService}
           />
           
@@ -126,23 +129,26 @@ const App = () => {
           />
           <Route path="/employeechangepassword" exact component={() => <EmployeeChangePassword />} />
           <Route
-            path="/employeedashboard/servicerequest"
+            path="/employeedashboard/invoice"
             exact
-            component={() => <EmployeeServiceRequest />}
+            component={() => <EmployeeInvoice />}
           />
           <Route
-            path="/employeedashboard/servicerequest/add"
+            path="/employeedashboard/invoice/add"
             exact
             component={EmployeeAddService}
           />
           <Route
-            path="/employeedashboard/servicerequest/:id"
+            path="/employeedashboard/invoice/:id"
             exact
             component={EmployeeService}
           />
           
           <Route path="/employee/passwordreset" exact component={() => <EmployeePasswordReset />} />
-          
+          <Route path="/employee/activateAccount" exact component={() => <EmployeeActivateAccount />} />
+          <Route path="/manager/activateAccount" exact component={() => <ManagerActivateAccount />} />
+          <Route path="/admin/activateAccount" exact component={() => <AdminActivateAccount />} />
+
         </Switch>
       </Router>
     </React.Fragment>

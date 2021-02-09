@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Sidenav from "../Sidenav";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { LoadContact } from "../../actions/index";
+import { LoadService } from "../../actions/index";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
-const Contact = ({ match }) => {
+const Invoice = () => {
   const [isLoading, setLoading] = useState(true);
 
-  const results = useSelector((state) => state.contact);
+  const results = useSelector((state) => state.service);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const url = `https://sukriti-crm-server.herokuapp.com/api/managerdashboard/contact`;
-    const getContacts = () => {
+    const url =
+      "http://localhost:4050/api/managerdashboard/invoice";
+
+    const getInvoice = async () => {
+      const token = localStorage.getItem("token");
       axios({
         url: url,
         method: "get",
@@ -26,7 +28,7 @@ const Contact = ({ match }) => {
         },
       })
         .then((response) => {
-          dispatch(LoadContact(response.data));
+          dispatch(LoadService(response.data));
           setLoading(false);
         })
         .catch((err) => {
@@ -34,7 +36,7 @@ const Contact = ({ match }) => {
           setLoading(false);
         });
     };
-    getContacts();
+    getInvoice();
   }, [dispatch]);
 
   return (
@@ -46,17 +48,19 @@ const Contact = ({ match }) => {
           </div>
           <div className="main-content">
             <div className="header">
-              <div className="title">Contacts</div>
-              <Link to="/managerdashboard/contact/add">
+              <div className="title">Service Request</div>
+              <Link to="/managerdashboard/invoice/add">
                 <button type="button">
                   Add <i className="material-icons">&#xe147;</i>
                 </button>
               </Link>
             </div>
             <hr />
-            <div className="loading">
-              <Loader type="Audio" color="#897eff" height={100} width={100} />
-              <p>Loading Contacts...</p>
+            <div className="content">
+              <div className="loading">
+                <Loader type="Audio" color="#897eff" height={100} width={100} />
+                <p>Loading Service Requests...</p>
+              </div>
             </div>
           </div>
         </div>
@@ -68,8 +72,8 @@ const Contact = ({ match }) => {
           </div>
           <div className="main-content">
             <div className="header">
-              <div className="title">Contacts</div>
-              <Link to="/managerdashboard/contact/add">
+              <div className="title">Service Request</div>
+              <Link to="/managerdashboard/invoice/add">
                 <button type="button">
                   Add <i className="material-icons">&#xe147;</i>
                 </button>
@@ -80,8 +84,8 @@ const Contact = ({ match }) => {
               <ul>
                 {results.map((result) => (
                   <li key={result._id}>
-                    <p>{result.title}</p>
-                    <Link to={`/managerdashboard/contact/${result._id}`}>
+                    <p>{result.invoiceNumber}</p>
+                    <Link to={`/managerdashboard/invoice/${result._id}`}>
                       <i className="material-icons">&#xe5c8;</i>
                     </Link>
                   </li>
@@ -95,4 +99,4 @@ const Contact = ({ match }) => {
   );
 };
 
-export default Contact;
+export default Invoice;

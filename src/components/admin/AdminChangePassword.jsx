@@ -19,7 +19,7 @@ const AdminChangePassword = () => {
     const [validEmail, setValidEmail] = useState(false);
     const [showEmailError, setShowEmailError] = useState(false);
     
-    const url = `https://sukriti-crm-server.herokuapp.com/api/admin/changePassword`;
+    const url = `http://localhost:4050/api/admin/changePassword`;
 
     const validateAndSetEmail = (v) => {
         if (emailPattern.test(v)) {

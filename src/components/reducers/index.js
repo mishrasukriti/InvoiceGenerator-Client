@@ -1,12 +1,8 @@
-import serviceReducer from "./ServiceReducer";
-import contactReducer from "./ContactReducer";
-import LeadReducer from "./LeadReducer";
+import invoiceReducer from "./InvoiceReducer";
 import { combineReducers } from "redux";
 
 const rootReducers = combineReducers({
-  service: serviceReducer,
-  lead: LeadReducer,
-  contact: contactReducer,
+  service: invoiceReducer,
 });
 
 export default rootReducers;

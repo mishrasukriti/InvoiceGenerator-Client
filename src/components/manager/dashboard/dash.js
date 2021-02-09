@@ -16,7 +16,7 @@ const Dash = () => {
 
 useEffect(() => {
     const url =
-      "https://sukriti-crm-server.herokuapp.com/api/managerdashboard/getCount";
+      "http://localhost:4050/api/managerdashboard/getCount";
 
     const getCount = async () => {
       const token = localStorage.getItem("token");

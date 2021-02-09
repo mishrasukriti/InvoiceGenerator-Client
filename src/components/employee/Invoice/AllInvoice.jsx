@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Sidenav from "../Sidenav";
 import { Link } from "react-router-dom";
+import Sidenav from "../Sidenav";
 import { useSelector, useDispatch } from "react-redux";
-import { LoadContact } from "../../actions/index";
+import { LoadService } from "../../actions/index";
 import LoaderTemplate from "../templates/LoaderTemplate";
 
-const Contact = () => {
-  const spAccessValue = localStorage.getItem("spAccessValue");
-  const results = useSelector((state) => state.contact);
+const Invoice = () => {
+  const results = useSelector((state) => state.service);
   const dispatch = useDispatch();
 
   const [isLoading, setIsLoading] = useState(true);
+  const spAccessValue = localStorage.getItem("spAccessValue");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const url = `https://sukriti-crm-server.herokuapp.com/api/employeedashboard/contact`;
-    const getContacts = () => {
+    const getInvoice = async () => {
+      const url =
+        "http://localhost:4050/api/employeedashboard/invoice";
+      const token = localStorage.getItem("token");
       axios({
         url: url,
         method: "get",
@@ -27,19 +28,19 @@ const Contact = () => {
       })
         .then((response) => {
           setIsLoading(false);
-          dispatch(LoadContact(response.data));
+          dispatch(LoadService(response.data));
         })
         .catch((err) => {
-          console.log(err);
           setIsLoading(false);
+          console.log(err);
         });
     };
-    getContacts();
+    getInvoice();
   }, [dispatch]);
 
   return (
     <React.Fragment>
-      {isLoading && <LoaderTemplate title={`Contacts`} />}
+      {isLoading && <LoaderTemplate title={`Service Request`} />}
       {!isLoading && (
         <div className="dashboard">
           <div className="sidebar">
@@ -47,22 +48,27 @@ const Contact = () => {
           </div>
           <div className="main-content">
             <div className="header">
-              <div className="title">Contacts</div>
+              <div className="title">Service Request</div>
+
+              {/* Added ADD BUTTON to add a Invoice by Employee */}
               {
-                (spAccessValue==="Yes") && (<Link to="/employeedashboard/contact/add">
+                (spAccessValue==="Yes") && (<Link to="/employeedashboard/invoice/add">
                   <button type="button">
                     Add <i className="material-icons">&#xe147;</i>
                   </button>
                 </Link>)
               }
+              
             </div>
             <hr />
             <div className="content">
               <ul>
                 {results.map((result) => (
                   <li key={result._id}>
-                    <p>{result.title}</p>
-                    <Link to={`/employeedashboard/contact/${result._id}`}>
+                    <p>{result.invoiceNumber}</p>
+                    <Link
+                      to={`/employeedashboard/invoice/${result._id}`}
+                    >
                       <i className="material-icons">&#xe5c8;</i>
                     </Link>
                   </li>
@@ -76,4 +82,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Invoice;

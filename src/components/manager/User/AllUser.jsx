@@ -15,7 +15,7 @@ const AllUsers = () => {
     const source = CancelToken.source();
     const getUsers = async () => {
       const token = localStorage.getItem("token");
-      const url = `https://sukriti-crm-server.herokuapp.com/api/managerdashboard/users`;
+      const url = `http://localhost:4050/api/managerdashboard/users`;
       axios({
         url: url,
         method: "get",

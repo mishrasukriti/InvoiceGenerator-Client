@@ -16,7 +16,7 @@ const EmployeeLogin = () => {
 
   const history = useHistory();
 
-  const url = `https://sukriti-crm-server.herokuapp.com/api/employee/login`;
+  const url = `http://localhost:4050/api/employee/login`;
 
   const ErrorNotify = (message) => toast.error(message);
 

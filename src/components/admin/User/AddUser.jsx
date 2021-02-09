@@ -3,6 +3,7 @@ import Sidenav from "../Sidenav";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 
 const AddUser = () => {
@@ -47,7 +48,7 @@ const AddUser = () => {
       };
   
       const url =
-        "https://sukriti-crm-server.herokuapp.com/api/employee/register";
+        "http://localhost:4050/api/employee/register";
         axios
         .post(url, request, {
           headers: headers,
@@ -69,7 +70,7 @@ const AddUser = () => {
     else if (type === "Manager") {
       // request.spAccessValue = "Yes"
       const url =
-        "https://sukriti-crm-server.herokuapp.com/api/manager/register";
+        "http://localhost:4050/api/manager/register";
 
       axios
         .post(url, request, {
@@ -89,7 +90,7 @@ const AddUser = () => {
         });
     } 
     else if (type === "Admin") {
-      const url = "https://sukriti-crm-server.herokuapp.com/api/admin/register";
+      const url = "http://localhost:4050/api/admin/register";
       axios
         .post(url, request, {
           headers: headers,
