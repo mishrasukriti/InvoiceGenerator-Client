@@ -14,8 +14,8 @@ const Invoice = ({ match }) => {
   // console.log("results in particular invoce is: ", results);
   const services = results.filter((result) => result._id === match.params.id);
 
-  const successNotify = () => toast.success("Succesfully Generated Pdf");
-  const failedNotify = () => toast.error("Oops..! Failed to Generated Pdf");
+  const successNotify = (msg) => toast.success(msg);
+  const failedNotify = (msg) => toast.error(msg);
 
 
   console.log("services in particular invoce is: ", services);
@@ -40,13 +40,13 @@ const Invoice = ({ match }) => {
       })
       .then((response) => {
         console.log("response in generatePDF is: ",response);
-        successNotify();
-        //setLoading(false);
+        window.open(response.data, "_blank")
+        successNotify("Succesfully Generated Pdf");
+        
       })
       .catch((err) => {
         console.log(err);
-        failedNotify();
-        //setLoading(false);
+        failedNotify(" Failed to Generated Pdf");
       });
   };
   
@@ -67,12 +67,13 @@ const Invoice = ({ match }) => {
       },
       body: JSON.stringify(response),
     })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        console.log("response in delInvoice in Invoice.jsx ",response);
+        successNotify("Succesfully Deleted Invoice");
       })
       .catch((error) => {
-        console.log(error);
+        console.log("error in delInvoice in Invoice.jsx ",error);
+        failedNotify("Failed to Delete Invoice");
       });
     dispatch(DelService(id));
   };
@@ -163,7 +164,6 @@ const Invoice = ({ match }) => {
 
                     <Link
                       onClick={() => delInvoice(result._id)}
-                      to="/admindashboard/invoice"
                     >
                       <button type="button">
                         Delete

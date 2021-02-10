@@ -1,30 +1,45 @@
 import React, { useState } from "react";
 import Sidenav from "../Sidenav";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const DelUser = () => {
   const [email, setEmail] = useState("");
   const token = localStorage.getItem("token");
   const history = useHistory();
 
+  const successNotify = () => toast.success("Succesfully Deleted User");
+  const failedNotify = () => toast.error("Failed to Delete User");
+
+
   const delUser = () => {
     console.log("delete");
-    const response = {
+    const request = {
       email: email,
     };
-    console.log(response);
-    fetch("http://localhost:4050/api/admin/deleteuser", {
-      method: "DELETE",
+    console.log(request);
+    axios.delete("http://localhost:4050/api/admin/deleteuser", request, {
       headers: {
         "auth-token": token,
         "Content-Type": "application/json",
         Accept: "application/json",
-      },
-      body: JSON.stringify(response),
+      }
     })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data);
+      .then((response) => {
+        console.log("response received in delete on allUser in admin is: ",response);
+        setLoading(false);
+        if(response.data === "deleted succesfully"){
+          successNotify();
+        }
+        else  failedNotify();
+        
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        failedNotify();
       });
     window.location.reload();
   };

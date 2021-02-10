@@ -26,7 +26,6 @@ const AllUsers = () => {
         cancelToken: source.token,
       })
         .then((response) => {
-          console.log(response);
           setLoading(false);
           setUsers(response.data);
         })

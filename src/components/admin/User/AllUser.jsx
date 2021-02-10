@@ -5,11 +5,18 @@ import Sidenav from "../Sidenav";
 import { Link } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import { toast , ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const AllUsers = () => {
   const [isLoading, setLoading] = useState(true);
   const [users, setUsers] = useState([]);
   const token = localStorage.getItem("token");
+
+  const successNotify = (msg) => toast.success(msg);
+  const failedNotify = (msg) => toast.error(msg);
+
 
   useEffect(() => {
     const CancelToken = axios.CancelToken;
@@ -27,7 +34,6 @@ const AllUsers = () => {
         cancelToken: source.token,
       })
         .then((response) => {
-          console.log(response);
           setLoading(false);
           setUsers(response.data);
         })
@@ -45,26 +51,36 @@ const AllUsers = () => {
   const delUser = (email) => {
     setUsers(users.filter((user) => user.email !== email));
     console.log("delete");
-    const response = {
+    const request = {
       email: email,
     };
-    console.log(response);
-    fetch("http://localhost:4050/api/admin/deleteuser", {
-      method: "DELETE",
+    console.log(request);
+
+    axios.delete("http://localhost:4050/api/admin/deleteuser", {
       headers: {
         "auth-token": token,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(response),
+      data: {
+        email: email
+      }
     })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data);
+      .then((response) => {
+        console.log("response received in delete on allUser in admin is: ",response);
+        setLoading(false);
+        successNotify("Succesfully Deleted User");
+        
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        failedNotify("Failed to delete User");
       });
   };
   return (
     <React.Fragment>
+      <ToastContainer></ToastContainer>
       {isLoading && (
         <div className="dashboard">
           <div className="sidebar">
