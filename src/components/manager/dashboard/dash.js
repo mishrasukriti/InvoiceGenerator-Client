@@ -16,7 +16,7 @@ const Dash = () => {
 
   useEffect(() => {
     const url =
-      "http://localhost:4050/api/mannagerdashboard/getCount";
+      "https://sukriti-invoice-server.herokuapp.com/api/mannagerdashboard/getCount";
 
     const getCount = async () => {
       const token = localStorage.getItem("token");
