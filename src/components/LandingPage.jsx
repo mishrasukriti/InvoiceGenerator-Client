@@ -3,7 +3,8 @@ import Employee from "../assets/user.png";
 import Manager from "../assets/manager.png";
 import Admin from "../assets/king.png";
 import logo from "../assets/logo.png";
-import banner from "../assets/banner.png";
+import banner from "../assets/banner.jpg";
+import invprv from "../assets/inv_preview.jpg"
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
@@ -33,21 +34,17 @@ const LandingPage = () => {
           <img className="banner" src={banner} alt=""/>
         </div>
         <div className="crm_content">
-          <div>
-            <h1>
-            Connect with your <br/>customers <br/> wherever they are
-            </h1>
+          <div className="land-cc">
+            <p><b>Quick Easy Invoice</b><br/>Create professional invoices instantly without any hassle of re-entering data the second time.<br/>
+            <br/><b>Email & Track Invoices</b><br/>Send invoice via email and get to know when the invoice was opened.<br/><br/>
+            <b>Easy Access Anywhere</b><br/>Easy to use dashboard for mobile and desktop. Get email alerts in real-time. </p>
             </div>
-          <div>
-            <ul>
-              <li>Reach customers across every channel: telephone, email, live chat, and social media</li>
-              <li>Get real-time notifications when customers interact with your business</li>
-              <li>Measure the effectiveness of your customer communication and find the best time and channel to reach out to your customers</li>
-            </ul>
+          <div className="text-center">
+            <img src={invprv} className="land-contentimg" alt=""/>
           </div>
         </div>
         <footer>
-          Copyrights @ zoho crm 2021
+          Copyrights @ zoho invoice 2021
         </footer>
        
       </div>

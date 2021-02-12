@@ -114,16 +114,15 @@ const Invoice = () => {
               </Link>
             </div>
             <hr />
-            <div>
-              <input type="text" onChange={(e) => setSearchText(e.target.value)} />
-              <button onClick={searchHandler}>Search</button>
-            </div>
-            <div className="content">
+            <div className="content ">
+              <input size="25" className="searchInput" type="text" onChange={(e) => setSearchText(e.target.value)} />
+              <button type="button" className="searchButton" onClick={searchHandler}>Search</button>
+            
               <ul>
                 {results.map((result) => (
                   <li key={result._id}>
                     <p>{result.invoiceNumber}</p>
-                    <Link to={`/managerdashboard/invoice/${result._id}`}>
+                    <Link to={`/admindashboard/invoice/${result._id}`}>
                       <i className="material-icons">&#xe5c8;</i>
                     </Link>
                   </li>
@@ -152,8 +151,8 @@ const Invoice = () => {
               <hr />
               <div className="content">
                 <Link to={`/admindashboard/invoice/${searchID}`}>
-                  <p>Click to open the searched Invoice</p>
-                  {/* <i className="material-icons">&#xe872;</i> */}
+                  <h1>Click to open the searched Invoice</h1>
+                  
                 </Link>
               </div>
             </div>

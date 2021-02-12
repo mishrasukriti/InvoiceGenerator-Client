@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidenav from "../Sidenav";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import { Pie } from 'react-chartjs-2';
 
 const Dash = () => {
   const [isLoading, setLoading] = useState(true);
 
-  
+
   const dispatch = useDispatch();
 
-  const [chartData, setchartData] = useState({});
+  const [countToday, setCountToday] = useState(0);
+  const [countTotal, setCountTotal] = useState(0);
 
-useEffect(() => {
+  useEffect(() => {
     const url =
-      "http://localhost:4050/api/managerdashboard/getCount";
+      "http://localhost:4050/api/mannagerdashboard/getCount";
 
     const getCount = async () => {
       const token = localStorage.getItem("token");
@@ -29,22 +29,9 @@ useEffect(() => {
         },
       })
         .then((response) => {
-          let pieData = [response.data.serviceRequestCount, response.data.leadCount, response.data.contactCount];
-          setchartData({
-            labels: ['Service Requests', 'Contacts', 'Leads'],
-            datasets: [
-              {
-                label: 'Population',
-                data: pieData,
-                backgroundColor: [
-                  'rgba(255, 99, 132, 0.6)',
-                  'rgba(153, 102, 255, 0.6)',
-                  'rgba(255, 159, 64, 0.6)'
-                  
-                ]
-              }
-            ]
-          });
+          console.log(response.data);
+          setCountTotal(response.data.invoiceCountTotalRes);
+          setCountToday(response.data.invoiceCountTodayRes);
           setLoading(false);
         })
         .catch((err) => {
@@ -90,8 +77,13 @@ useEffect(() => {
 
             </div>
             <hr />
-            <div className="chart">
-            <Pie data={chartData}/>
+            <div className="dash-main">
+              <div className="countdata">
+                <h2>Total invoices generated<br/> {countTotal}</h2>
+              </div>
+              <div className="countdata">
+                <h2>Invoices generated today<br/> {countToday}</h2>
+              </div>
             </div>
           </div>
         </div>
