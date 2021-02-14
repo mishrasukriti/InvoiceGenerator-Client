@@ -19,7 +19,7 @@ const Invoice = () => {
 
   useEffect(() => {
     const url =
-      "https://sukriti-invoice-server.herokuapp.com/api/managerdashboard/invoice";
+      "http://localhost:4050/api/managerdashboard/invoice";
 
     const getInvoice = async () => {
       const token = localStorage.getItem("token");
@@ -48,7 +48,7 @@ const Invoice = () => {
     
     const text = searchText;
     setSearchText("");
-    const url = "https://sukriti-invoice-server.herokuapp.com/api/admindashboard/searchInvoice";
+    const url = "http://localhost:4050/api/managerdashboard/searchInvoice";
     axios({
       url: url,
       method: "post",
@@ -122,7 +122,7 @@ const Invoice = () => {
                 {results.map((result) => (
                   <li key={result._id}>
                     <p>{result.invoiceNumber}</p>
-                    <Link to={`/admindashboard/invoice/${result._id}`}>
+                    <Link to={`/managerdashboard/invoice/${result._id}`}>
                       <i className="material-icons">&#xe5c8;</i>
                     </Link>
                   </li>
@@ -150,7 +150,7 @@ const Invoice = () => {
               </div>
               <hr />
               <div className="content">
-                <Link to={`/admindashboard/invoice/${searchID}`}>
+                <Link to={`/managerdashboard/invoice/${searchID}`}>
                   <h1>Click to open the searched Invoice</h1>
                   
                 </Link>

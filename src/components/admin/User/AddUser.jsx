@@ -13,7 +13,7 @@ const AddUser = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [spAccessValue, setSpAccessValue] = useState("No");
-  const [type, setType] = useState("Employee");
+  const [type, setType] = useState("Manager");
 
   const successNotify = () => toast.success("Succesfully User Added");
   const failedNotify = (message) => toast.error(message);
@@ -22,8 +22,9 @@ const AddUser = () => {
 
   //ADD EMPLOYEE
   const addUser = (e) => {
-    console.log("inside addUser function in file AddUser.jsx client");
+
     e.preventDefault();
+    console.log("triggered");
     // console.log("clicked");
     const request = {
       fname: fname,
@@ -46,16 +47,16 @@ const AddUser = () => {
         password: password,
         spAccessValue: spAccessValue
       };
-  
+
       const url =
-        "https://sukriti-invoice-server.herokuapp.com/api/employee/register";
-        axios
+        "http://localhost:4050/api/employee/register";
+      axios
         .post(url, request, {
           headers: headers,
         })
         .then((response) => {
           if (response.data) {
-            console.log("succesfuly got response  in employee/register "+ response);
+            console.log("succesfuly got response  in employee/register " + response);
             successNotify();
           } else {
             failedNotify(response.data);
@@ -65,12 +66,12 @@ const AddUser = () => {
           console.log(error);
           failedNotify("Failed to Add User");
         });
-    } 
-    
+    }
+
     else if (type === "Manager") {
       // request.spAccessValue = "Yes"
       const url =
-        "https://sukriti-invoice-server.herokuapp.com/api/manager/register";
+        "http://localhost:4050/api/manager/register";
 
       axios
         .post(url, request, {
@@ -88,15 +89,15 @@ const AddUser = () => {
           console.log(error);
           failedNotify("Failed to Add User.");
         });
-    } 
+    }
     else if (type === "Admin") {
-      const url = "https://sukriti-invoice-server.herokuapp.com/api/admin/register";
+      const url = "http://localhost:4050/api/admin/register";
       axios
         .post(url, request, {
           headers: headers,
         })
         .then((response) => {
-          response.json();
+         console.log(response)
           if (response.status === 200) {
             successNotify();
           } else if (response.status === 400) {
@@ -119,7 +120,9 @@ const AddUser = () => {
   };
 
   return (
+
     <React.Fragment>
+
       <ToastContainer />
       <div className="dashboard">
         <div className="sidebar">
@@ -131,61 +134,74 @@ const AddUser = () => {
           </div>
           <hr />
           <div className="content">
-            <div className="add-form">
-              <input
-                type="text"
-                name="fname"
-                value={fname}
-                placeholder="First Name"
-                onChange={(e) => setFname(e.target.value)}
-              />
-              <input
-                type="text"
-                name="lname"
-                value={lname}
-                placeholder="Last Name"
-                onChange={(e) => setLname(e.target.value)}
-              />
-              <input
-                type="email"
-                name="email"
-                value={email}
-                placeholder="email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type="password"
-                name="pwd"
-                alue={password}
-                placeholder="password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <select
-                name="spAccessValue"
-                id="spAccessValue"
-                onChange={(event) => setSpAccessValue(event.target.value)}
-              >
-                <option value="spAccessValue" disabled>Select Special Access Value</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
+            <form className="add-form" onSubmit={addUser}>
 
-              <select
-                name="type"
-                id="type"
-                onChange={(event) => setType(event.target.value)}
-              >
-                <option value="Employee">Employee</option>
-                <option value="Manager">Manager</option>
-                <option value="Admin">Admin</option>
-              </select>
-              <div className="button-container">
-                <button onClick={(e) => addUser(e)}>Add User</button>
-                <button type="button" onClick={() => history.goBack()}>
-                  Back
+              <div className="add-form">
+                <input
+                  type="text"
+                  name="fname"
+                  value={fname}
+                  placeholder="First Name"
+                  onChange={(e) => setFname(e.target.value)}
+
+                />
+                <input
+                  type="text"
+                  name="lname"
+                  value={lname}
+                  placeholder="Last Name"
+                  onChange={(e) => setLname(e.target.value)}
+
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  placeholder="email"
+                  onChange={(e) => setEmail(e.target.value)}
+
+                />
+                <input
+                  type="password"
+                  name="pwd"
+                  value={password}
+                  placeholder="password"
+                  onChange={(e) => setPassword(e.target.value)}
+
+                />
+
+
+
+                <select
+                  name="type"
+                  id="type"
+                  onChange={(event) => setType(event.target.value)}
+                >
+                  <option value="Manager">Manager</option>
+                  <option value="Admin">Admin</option>
+                  <option value="Employee">Employee</option>
+                </select>
+
+                {type === "Employee" &&
+                  <select
+                    name="spAccessValue"
+                    id="spAccessValue"
+                    onChange={(e) => setSpAccessValue(e.target.value)}
+                    required
+                  >
+                    <option value="">-- Select Special Access Value --</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>}
+
+                <div className="button-container">
+                  <button type="submit">Add User</button>
+                  <button type="button" onClick={() => history.goBack()}>
+                    Back
                 </button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

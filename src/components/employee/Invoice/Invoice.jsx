@@ -25,7 +25,7 @@ const Invoice = ({ match }) => {
 
   const generatePDF = ()=>{ 
     const token = localStorage.getItem("token");
-    const generatePdfURL = "https://sukriti-invoice-server.herokuapp.com/api/employeedashboard/genearatePDF";
+    const generatePdfURL = "http://localhost:4050/api/employeedashboard/genearatePDF";
     
     const headers = {
       "auth-token": token,
@@ -50,7 +50,7 @@ const Invoice = ({ match }) => {
   };
   
 
-  const url = "https://sukriti-invoice-server.herokuapp.com/api/employeedashboard/invoice";
+  const url = "http://localhost:4050/api/employeedashboard/invoice";
 
   const delInvoice = (id) => {
     const token = localStorage.getItem("token");

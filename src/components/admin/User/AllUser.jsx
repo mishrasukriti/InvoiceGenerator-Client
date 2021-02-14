@@ -23,7 +23,7 @@ const AllUsers = () => {
     const source = CancelToken.source();
     const getUsers = async () => {
       const token = localStorage.getItem("token");
-      const url = `https://sukriti-invoice-server.herokuapp.com/api/admindashboard/users`;
+      const url = `http://localhost:4050/api/admindashboard/users`;
       axios({
         url: url,
         method: "get",
@@ -56,7 +56,7 @@ const AllUsers = () => {
     };
     console.log(request);
 
-    axios.delete("https://sukriti-invoice-server.herokuapp.com/api/admin/deleteuser", {
+    axios.delete("http://localhost:4050/api/admin/deleteuser", {
       headers: {
         "auth-token": token,
         "Content-Type": "application/json",

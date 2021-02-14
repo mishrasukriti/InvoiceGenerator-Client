@@ -17,7 +17,7 @@ const AddForm = () => {
 
   const token = localStorage.getItem("token");
   const url =
-    "https://sukriti-invoice-server.herokuapp.com/api/admindashboard/invoice";
+    "http://localhost:4050/api/admindashboard/invoice";
 
   
   const senderEmail = localStorage.getItem("email");

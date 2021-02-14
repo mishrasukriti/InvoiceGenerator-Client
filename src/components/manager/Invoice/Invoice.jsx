@@ -50,7 +50,7 @@ const Invoice = ({ match }) => {
   };
   
 
-  const url = "https://sukriti-invoice-server.herokuapp.com/api/managerdashboard/invoice";
+  const url = "http://localhost:4050/api/managerdashboard/invoice";
 
   const delInvoice = (id) => {
     const token = localStorage.getItem("token");

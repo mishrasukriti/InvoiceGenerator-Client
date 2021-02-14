@@ -20,7 +20,7 @@ const DelUser = () => {
       email: email,
     };
     console.log(request);
-    axios.delete("https://sukriti-invoice-server.herokuapp.com/api/admin/deleteuser", request, {
+    axios.delete("http://localhost:4050/api/admin/deleteuser", request, {
       headers: {
         "auth-token": token,
         "Content-Type": "application/json",

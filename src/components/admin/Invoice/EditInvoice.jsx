@@ -72,7 +72,7 @@ const EditService = () => {
     const request = invoice;
     axios
       .put(
-        `https://sukriti-invoice-server.herokuapp.com/api/admindashboard/invoice/${id}`,
+        `http://localhost:4050/api/admindashboard/invoice/${id}`,
         request
       )
       .then((res) => {
