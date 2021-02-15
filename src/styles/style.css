@@ -10,6 +10,21 @@
   height: auto!important;
 }
 
+.addproduct{
+  padding: 5px;
+  background: #169d52;
+  color: white;
+  border: none;
+  padding: 1px 7px;
+  font-size: 22px;
+}
+
+.rmvproduct{
+  background: crimson !important;
+  font-size: 20px !important;
+  padding: 1px 9px 4px 9px !important;
+
+}
 
 .crm_content{
   display: flex;
