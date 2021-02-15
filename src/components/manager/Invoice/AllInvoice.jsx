@@ -19,7 +19,7 @@ const Invoice = () => {
 
   useEffect(() => {
     const url =
-      "http://localhost:4050/api/managerdashboard/invoice";
+      "https://sukriti-invoice-server.herokuapp.com/api/managerdashboard/invoice";
 
     const getInvoice = async () => {
       const token = localStorage.getItem("token");
@@ -48,7 +48,7 @@ const Invoice = () => {
     
     const text = searchText;
     setSearchText("");
-    const url = "http://localhost:4050/api/managerdashboard/searchInvoice";
+    const url = "https://sukriti-invoice-server.herokuapp.com/api/managerdashboard/searchInvoice";
     axios({
       url: url,
       method: "post",
