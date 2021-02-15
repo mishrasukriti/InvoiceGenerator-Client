@@ -48,7 +48,7 @@ const Invoice = () => {
 
     const text = searchText;
     setSearchText("");
-    const url = "http://localhost:4050/api/admindashboard/searchInvoice";
+    const url = "http://localhost:4050/api/employeedashboard/searchInvoice";
     axios({
       url: url,
       method: "post",
@@ -138,7 +138,7 @@ const Invoice = () => {
               <hr />
               
               <div className="content">
-                <Link to={`/admindashboard/invoice/${searchID}`}>
+                <Link to={`/employeedashboard/invoice/${searchID}`}>
                   <h1>Click to open the searched Invoice</h1>
                   
                 </Link>
