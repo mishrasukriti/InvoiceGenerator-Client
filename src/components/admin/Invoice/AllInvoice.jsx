@@ -128,7 +128,7 @@ const Invoice = () => {
 
               <div >
                 <Link to={`/admindashboard/invoice/${searchID}`}>
-                  <p>Click to open the searched Invoice</p>
+                  <h1>Click to open the searched Invoice</h1>
                   {/* <i className="material-icons">&#xe872;</i> */}
                 </Link>
               </div>

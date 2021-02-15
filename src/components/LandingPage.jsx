@@ -4,7 +4,6 @@ import Manager from "../assets/manager.png";
 import Admin from "../assets/king.png";
 import logo from "../assets/logo.png";
 import banner from "../assets/banner.webp";
-// import invprv from "../assets/inv_preview.jpg"
 import { Link } from "react-router-dom";
 
 const LandingPage = () => {
