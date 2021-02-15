@@ -15,14 +15,16 @@
   background: #169d52;
   color: white;
   border: none;
-  padding: 1px 7px;
+  padding: 0px 5px 1px 5px;
   font-size: 22px;
+  margin-left: 5px;
 }
 
 .rmvproduct{
   background: crimson !important;
   font-size: 20px !important;
-  padding: 1px 9px 4px 9px !important;
+  padding: 0px 6px 2px 6px !important;
+  margin-left: 8px;
 
 }
 
