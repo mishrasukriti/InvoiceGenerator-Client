@@ -1,8 +1,11 @@
 # InvoiceGenerator-client
 
-Deployment Link :	https://sukriti-invoice-application.netlify.app/employeedashboard/invoice
+Deployment Link :	https://sukriti-invoice-application.netlify.app/
+
 Frontend Link :	https://github.com/mishrasukriti/InvoiceGenerator-Client
+
 Backend Link :	https://github.com/mishrasukriti/InvoiceGenerator-Server
+
 
 Credentials to try out the app :
 
